@@ -9,15 +9,15 @@ const FooterSection = () => {
             <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center">
               <GraduationCap className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-display font-bold text-lg">StudentHub</span>
+            <span className="font-display font-bold text-lg">Campus Connect Hub</span>
           </div>
-          <div className="flex gap-8 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">About</a>
-            <a href="#" className="hover:text-foreground transition-colors">Privacy</a>
-            <a href="#" className="hover:text-foreground transition-colors">Terms</a>
-            <a href="#" className="hover:text-foreground transition-colors">Contact</a>
+          <div className="flex gap-8 text-xs font-bold uppercase tracking-widest text-muted-foreground/60">
+            <a href="#" className="hover:text-primary transition-colors">Platform About</a>
+            <a href="#" className="hover:text-primary transition-colors">Legal & Privacy</a>
+            <a href="#" className="hover:text-primary transition-colors">Terminus</a>
+            <a href="#" className="hover:text-primary transition-colors">Support</a>
           </div>
-          <p className="text-xs text-muted-foreground">© 2026 StudentHub. All rights reserved.</p>
+          <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/40">© 2026 Campus Connect Hub. Academic Management Systems.</p>
         </div>
       </div>
     </footer>

@@ -12,12 +12,12 @@ import {
 } from "@/components/ui/sidebar";
 
 const mainItems = [
-  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
+  { title: "Academic Home", url: "/dashboard", icon: LayoutDashboard },
   { title: "Attendance", url: "/dashboard/attendance", icon: ClipboardCheck },
-  { title: "Assignments", url: "/dashboard/assignments", icon: FileText },
-  { title: "Study Materials", url: "/dashboard/materials", icon: BookOpen },
-  { title: "AI Assistant", url: "/dashboard/ai", icon: Brain },
-  { title: "Timetable", url: "/dashboard/timetable", icon: Clock },
+  { title: "Course Registry", url: "/dashboard/assignments", icon: FileText },
+  { title: "Library Access", url: "/dashboard/materials", icon: BookOpen },
+  { title: "Academic Insights", url: "/dashboard/ai", icon: Brain },
+  { title: "Class Schedule", url: "/dashboard/timetable", icon: Clock },
 ];
 
 const socialItems = [
@@ -29,11 +29,11 @@ const socialItems = [
 ];
 
 const moreItems = [
-  { title: "Marketplace", url: "/dashboard/marketplace", icon: ShoppingBag },
+  { title: "Student Stores", url: "/dashboard/marketplace", icon: ShoppingBag },
   { title: "Lost & Found", url: "/dashboard/lost-found", icon: MapPin },
-  { title: "Notifications", url: "/dashboard/notifications", icon: Bell },
-  { title: "Analytics", url: "/dashboard/analytics", icon: BarChart3 },
-  { title: "Emergency", url: "/dashboard/emergency", icon: Shield },
+  { title: "Official Notices", url: "/dashboard/notifications", icon: Bell },
+  { title: "Data Analytics", url: "/dashboard/analytics", icon: BarChart3 },
+  { title: "Campus Security", url: "/dashboard/emergency", icon: Shield },
 ];
 
 const NavGroup = ({ label, items, collapsed }: { label: string; items: typeof mainItems; collapsed: boolean }) => {
@@ -72,11 +72,11 @@ export function AppSidebar() {
 
   return (
     <Sidebar collapsible="icon" className="border-r border-sidebar-border">
-      <div className="p-4 flex items-center gap-2">
-        <div className="w-8 h-8 rounded-lg gradient-bg flex items-center justify-center shrink-0">
+      <div className="p-4 flex items-center gap-3 border-b border-sidebar-border/50 mb-4">
+        <div className="w-8 h-8 rounded bg-primary flex items-center justify-center shrink-0">
           <GraduationCap className="w-5 h-5 text-primary-foreground" />
         </div>
-        {!collapsed && <span className="font-display font-bold text-lg">StudentHub</span>}
+        {!collapsed && <span className="font-bold text-sm tracking-tight uppercase">Campus Connect Hub</span>}
       </div>
       <SidebarContent className="px-2">
         <NavGroup label="Main" items={mainItems} collapsed={collapsed} />
