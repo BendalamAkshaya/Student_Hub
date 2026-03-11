@@ -223,7 +223,7 @@ const DashboardHome = () => {
             <div key={s.subject} className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="font-medium">{s.subject}</span>
-                <span className={s.pct < 80 ? "text-amber-500 font-semibold" : "text-muted-foreground"}>{s.pct}%</span>
+                <span className={s.pct < 80 ? "text-destructive font-semibold" : "text-muted-foreground"}>{s.pct}%</span>
               </div>
               <Progress value={s.pct} className="h-2" />
             </div>

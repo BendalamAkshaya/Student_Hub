@@ -41,7 +41,7 @@ const NavGroup = ({ label, items, collapsed }: { label: string; items: typeof ma
   const isExpanded = items.some((i) => location.pathname === i.url);
 
   return (
-    <SidebarGroup open={isExpanded} onOpenChange={() => {}}>
+    <SidebarGroup>
       {!collapsed && <SidebarGroupLabel className="text-xs uppercase tracking-wider text-muted-foreground/60">{label}</SidebarGroupLabel>}
       <SidebarGroupContent>
         <SidebarMenu>
