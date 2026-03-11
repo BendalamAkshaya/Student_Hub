@@ -68,8 +68,8 @@ const DashboardHome = () => {
       {/* Stat cards */}
       <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[
-          { label: "Attendance", value: "87%", icon: CheckCircle2, change: "+2%", color: "text-emerald-500" },
-          { label: "Assignments Due", value: "3", icon: Clock, change: "This week", color: "text-amber-500" },
+          { label: "Attendance", value: "87%", icon: CheckCircle2, change: "+2%", color: "text-success" },
+          { label: "Assignments Due", value: "3", icon: Clock, change: "This week", color: "text-warning" },
           { label: "CGPA", value: "8.7", icon: TrendingUp, change: "+0.3", color: "text-primary" },
           { label: "Events", value: "5", icon: CalendarDays, change: "Upcoming", color: "text-accent" },
         ].map((s) => (
