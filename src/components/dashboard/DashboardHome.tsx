@@ -4,6 +4,9 @@ import {
   Clock, AlertTriangle, Sparkles, ArrowUpRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   BarChart, Bar
@@ -30,6 +33,44 @@ const item = {
 };
 
 const DashboardHome = () => {
+  const { user } = useAuth();
+  const [profile, setProfile] = useState<any>(null);
+  const [localAnnouncements, setLocalAnnouncements] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      if (!user) return;
+
+      try {
+        // Fetch Profile
+        const { data: profileData } = await supabase
+          .from('profiles')
+          .select('*')
+          .eq('id', user.id)
+          .single();
+        
+        if (profileData) setProfile(profileData);
+
+        // Fetch Announcements
+        const { data: announcementData } = await supabase
+          .from('announcements')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        if (announcementData) setLocalAnnouncements(announcementData);
+        
+      } catch (err) {
+        console.error("Error fetching dashboard data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, [user]);
+
   return (
     <motion.div
       variants={container}
@@ -41,9 +82,11 @@ const DashboardHome = () => {
       <motion.div variants={item} className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            Academic Status
+            Academic Status: <span className="text-primary">{profile?.full_name || 'Student'}</span>
           </h1>
-          <p className="text-sm text-muted-foreground mt-1 tracking-tight">System synchronization complete. Current as of March 2026.</p>
+          <p className="text-sm text-muted-foreground mt-1 tracking-tight">
+            {profile?.department ? `${profile.department} Dept | ` : ""}System synchronized.
+          </p>
         </div>
         <div className="flex gap-2">
           <Button variant="outline" size="sm" className="h-9 rounded border-border text-xs font-semibold uppercase tracking-wider">
@@ -175,15 +218,17 @@ const DashboardHome = () => {
         <motion.div variants={item} className="border rounded-lg bg-card p-6 shadow-sm">
           <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-6">System Notices</h3>
           <div className="space-y-4">
-            {announcements.length > 0 ? announcements.map((a) => (
-              <div key={a.title} className="p-4 rounded border bg-secondary/5 hover:border-primary/20 transition-all cursor-pointer group">
+            {localAnnouncements.length > 0 ? localAnnouncements.map((a) => (
+              <div key={a.id} className="p-4 rounded border bg-secondary/5 hover:border-primary/20 transition-all cursor-pointer group">
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1 min-w-0">
                     <div className="text-sm font-bold tracking-tight flex items-center gap-2">
-                      {a.urgent && <div className="w-1.5 h-1.5 rounded-full bg-destructive animate-pulse" />}
+                      {a.priority === 'urgent' && <div className="w-1.5 h-1.5 rounded-full bg-destructive animate-pulse" />}
                       <span className="truncate">{a.title}</span>
                     </div>
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mt-1.5">{a.time}</div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mt-1.5">
+                      {new Date(a.created_at).toLocaleDateString()}
+                    </div>
                   </div>
                   <ArrowUpRight className="w-4 h-4 text-muted-foreground/40 group-hover:text-primary transition-colors shrink-0" />
                 </div>

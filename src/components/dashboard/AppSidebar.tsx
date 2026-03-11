@@ -1,7 +1,7 @@
 import {
   LayoutDashboard, ClipboardCheck, FileText, BookOpen, Brain,
   Briefcase, Calendar, MessageSquare, Users, Bell, GraduationCap,
-  ShoppingBag, MapPin, BarChart3, Clock, Shield
+  ShoppingBag, MapPin, BarChart3, Clock, Shield, TrendingUp
 } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useLocation } from "react-router-dom";
@@ -16,8 +16,9 @@ const mainItems = [
   { title: "Attendance", url: "/dashboard/attendance", icon: ClipboardCheck },
   { title: "Course Registry", url: "/dashboard/assignments", icon: FileText },
   { title: "Library Access", url: "/dashboard/materials", icon: BookOpen },
-  { title: "Academic Insights", url: "/dashboard/ai", icon: Brain },
+  { title: "Academic Insights", url: "/dashboard/insights", icon: TrendingUp },
   { title: "Class Schedule", url: "/dashboard/timetable", icon: Clock },
+  { title: "AI Tutor Hub", url: "/dashboard/ai", icon: Brain },
 ];
 
 const socialItems = [
@@ -32,7 +33,7 @@ const moreItems = [
   { title: "Student Stores", url: "/dashboard/marketplace", icon: ShoppingBag },
   { title: "Lost & Found", url: "/dashboard/lost-found", icon: MapPin },
   { title: "Official Notices", url: "/dashboard/notifications", icon: Bell },
-  { title: "Data Analytics", url: "/dashboard/analytics", icon: BarChart3 },
+  { title: "Performance Pro", url: "/dashboard/insights", icon: BarChart3 },
   { title: "Campus Security", url: "/dashboard/emergency", icon: Shield },
 ];
 
