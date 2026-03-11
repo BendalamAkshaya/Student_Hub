@@ -88,6 +88,10 @@
     --border: 224 20% 18%;
     --input: 224 20% 18%;
     --ring: 245 58% 60%;
+    --success: 160 60% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 80% 55%;
+    --warning-foreground: 0 0% 100%;
 
     --glass-bg: 224 25% 10% / 0.7;
     --glass-border: 0 0% 100% / 0.08;
