@@ -179,7 +179,7 @@ const DashboardHome = () => {
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1">
                     <div className="text-sm font-medium flex items-center gap-2">
-                      {a.urgent && <AlertTriangle className="w-3 h-3 text-amber-500 shrink-0" />}
+                      {a.urgent && <AlertTriangle className="w-3 h-3 text-warning shrink-0" />}
                       {a.title}
                     </div>
                     <div className="text-xs text-muted-foreground mt-1">{a.time}</div>
