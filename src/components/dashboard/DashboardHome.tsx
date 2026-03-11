@@ -143,7 +143,7 @@ const DashboardHome = () => {
           <div className="space-y-3">
             {assignments.map((a) => (
               <div key={a.title} className="flex items-center gap-3 p-3 rounded-xl bg-secondary/50">
-                <div className={`w-2 h-2 rounded-full ${a.status === "submitted" ? "bg-emerald-500" : "bg-amber-500"}`} />
+                <div className={`w-2 h-2 rounded-full ${a.status === "submitted" ? "bg-success" : "bg-warning"}`} />
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-medium truncate">{a.title}</div>
                   <div className="text-xs text-muted-foreground">Due: {a.due}</div>
